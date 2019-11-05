@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "Throttle many promises, resolve once",
   "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
+  "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dherault/throttle-asynchronous.git"
+  },
+  "homepage": "https://github.com/dherault/throttle-asynchronous#readme",
+  "bugs": {
+    "url": "https://github.com/dherault/throttle-asynchronous/issues"
   },
   "keywords": [
     "throttle",
@@ -20,12 +23,10 @@
     "promise-throttle",
     "throttled"
   ],
-  "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dherault/throttle-asynchronous/issues"
+  "scripts": {
+    "build": "webpack --mode production",
+    "test": "jest --coverage"
   },
-  "homepage": "https://github.com/dherault/throttle-asynchronous#readme",
   "devDependencies": {
     "eslint": "^6.6.0",
     "eslint-config-dherault": "^1.0.3",

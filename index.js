@@ -14,7 +14,6 @@ function throttle(fn, delay) {
     accumulator.push(() => resolve({ hasResolved: false }))
 
     const execute = () => {
-
       const promiseOrValue = fn(...args)
 
       if (typeof promiseOrValue.then === 'function') {
@@ -39,4 +38,4 @@ function throttle(fn, delay) {
   })
 }
 
-export default throttle
+module.exports = throttle

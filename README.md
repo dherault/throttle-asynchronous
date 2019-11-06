@@ -4,7 +4,7 @@ Throttle many promises, resolve once.
 
 ## Installation
 
-`npm install throttle-asynchronous`
+`npm install throttle-asynchronous --save`
 
 or
 
@@ -23,9 +23,9 @@ const { hasResolved, value } = await throttledFn(argsForAsyncFn)
 Then you can call your throttled function in a batch:
 
 ```js
-throttledFn(args) // { hasResolved: false } Did not resolve because a sibling was invoked in the interval duration
-throttledFn(args) // { hasResolved: false }
-throttledFn(args) // { hasResolved: true, value: ... } Resolved because last in the batch
+throttledFn(args) // promise: { hasResolved: false } Did not resolve because a sibling was invoked in the interval duration
+throttledFn(args) // promise: { hasResolved: false }
+throttledFn(args) // promise: { hasResolved: true, value: ... } Resolved because last in the batch
 ```
 
 Works with synchronous functions too.
@@ -44,10 +44,10 @@ function updateStory(text) {
 const throttledUpdateStory = throttle(updateStory, 1000)
 
 // Each keystroke will trigger input.onChange, hence the throttle
-input.onChange = text => {
+input.onChange = async text => {
   setState({ updated: false })
 
-  const { hasResolved, value } = throttledUpdateStory(text)
+  const { hasResolved, value } = await throttledUpdateStory(text)
 
   if (hasResolved) {
     setState({ updated: true })

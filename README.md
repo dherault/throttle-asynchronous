@@ -1,5 +1,7 @@
 # throttle-asynchronous
 
+[![npm version](https://badge.fury.io/js/throttle-asynchronous.svg)](https://badge.fury.io/js/throttle-asynchronous)
+
 Throttle many promises, resolve once.
 
 ## Installation

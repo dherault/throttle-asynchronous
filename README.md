@@ -58,3 +58,11 @@ input.onChange = async text => {
   }
 }
 ```
+
+## Say thanks
+
+Show your gratitude with a star on [GitHub](https://github.com/dherault/array-differences)!
+
+## License
+
+MIT

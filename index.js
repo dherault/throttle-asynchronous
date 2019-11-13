@@ -13,26 +13,12 @@ function throttle(fn, delay) {
 
     accumulator.push(() => resolve({ hasResolved: false }))
 
-    const execute = () => {
-      const promiseOrValue = fn(...args)
-
-      if (typeof promiseOrValue.then === 'function') {
-        return promiseOrValue.then(value => {
-          decumulate()
-          resolve({
-            hasResolved: true,
-            value,
-          })
-        })
-      }
-
-      decumulate()
-
-      resolve({
-        hasResolved: true,
-        value: promiseOrValue,
+    const execute = () => Promise.resolve(fn(...args))
+      .then(value => {
+        decumulate()
+        resolve({ hasResolved: true, value })
       })
-    }
+
 
     timeoutId = setTimeout(execute, delay)
   })

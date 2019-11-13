@@ -2,12 +2,6 @@ function throttle(fn, delay) {
   let timeoutId
   const accumulator = []
 
-  const decumulate = () => {
-    accumulator.pop()
-    accumulator.forEach(fn => fn())
-    accumulator.length = 0
-  }
-
   return (...args) => new Promise(resolve => {
     clearTimeout(timeoutId)
 
@@ -15,10 +9,11 @@ function throttle(fn, delay) {
 
     const execute = () => Promise.resolve(fn(...args))
       .then(value => {
-        decumulate()
+        accumulator.pop()
+        accumulator.forEach(fn => fn())
+        accumulator.length = 0
         resolve({ hasResolved: true, value })
       })
-
 
     timeoutId = setTimeout(execute, delay)
   })

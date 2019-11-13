@@ -34,6 +34,29 @@ test('Throttles like a turtle', () => {
   expect(p4).resolves.toEqual({ hasResolved: true, value: [3, 4] })
 });
 
+test('Throttles the right amount of times', async () => {
+  let i = 0
+
+  const asyncFn = () => new Promise(resolve => {
+    i++
+    setTimeout(() => resolve(true), 1000)
+  })
+
+  const t = throttle(asyncFn, 500)
+
+  const p0 = t()
+  const p1 = t()
+  const p2 = t()
+
+  expect(p0).resolves.toEqual({ hasResolved: false })
+  expect(p1).resolves.toEqual({ hasResolved: false })
+  expect(p2).resolves.toEqual({ hasResolved: true, value: true })
+
+  await Promise.all([p0, p1, p2])
+
+  expect(i).toEqual(1)
+})
+
 
 test('Rejects like a gentleman', () => {
   const t = throttle(rejectedAsyncFn, 1000)

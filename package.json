@@ -24,7 +24,6 @@
     "throttled"
   ],
   "scripts": {
-    "build": "webpack --mode production",
     "test": "jest --coverage"
   },
   "devDependencies": {

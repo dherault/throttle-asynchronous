@@ -1,8 +1,10 @@
-const throttle = require('./index');
+/* eslint-env jest */
+
+const throttle = require('./index')
 
 const syncFn = (...args) => args
 const asyncFn = (...args) => Promise.resolve(args)
-const rejectedAsyncFn = (...args) => Promise.reject(new Error('oh oh'))
+const rejectedAsyncFn = () => Promise.reject(new Error('oh oh'))
 
 test('Resolves hasResolved and value', () => {
   const t = throttle(syncFn, 1000)
@@ -12,7 +14,7 @@ test('Resolves hasResolved and value', () => {
   const asyncT = throttle(asyncFn, 1000)
 
   expect(asyncT(1, 2)).resolves.toEqual({ hasResolved: true, value: [1, 2] })
-});
+})
 
 test('Throttles like a turtle', () => {
   const t = throttle(syncFn, 1000)
@@ -32,7 +34,7 @@ test('Throttles like a turtle', () => {
 
   expect(p3).resolves.toEqual({ hasResolved: false })
   expect(p4).resolves.toEqual({ hasResolved: true, value: [3, 4] })
-});
+})
 
 test('Throttles the right amount of times', async () => {
   let i = 0
@@ -56,7 +58,6 @@ test('Throttles the right amount of times', async () => {
 
   expect(i).toEqual(1)
 })
-
 
 test('Rejects like a gentleman', () => {
   const t = throttle(rejectedAsyncFn, 1000)

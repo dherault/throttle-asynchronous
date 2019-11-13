@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "eslint": "^6.6.0",
-    "eslint-config-dherault": "^1.0.3",
+    "eslint-config-dherault": "^1.0.5",
+    "eslint-plugin-import": "^2.18.2",
     "jest": "^24.9.0"
   }
 }

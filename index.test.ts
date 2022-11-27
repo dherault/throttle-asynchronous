@@ -3,7 +3,6 @@ import throttle from './index'
 
 const syncFn = (...args: any[]) => args
 const asyncFn = (...args: any[]) => Promise.resolve(args)
-const rejectedAsyncFn = () => Promise.reject(new Error('oh oh'))
 
 test('Resolves hasResolved and value', () => {
   const t = throttle(syncFn, 1000)

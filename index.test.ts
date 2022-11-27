@@ -1,9 +1,8 @@
 /* eslint-env jest */
+import throttle from './index'
 
-const throttle = require('./index')
-
-const syncFn = (...args) => args
-const asyncFn = (...args) => Promise.resolve(args)
+const syncFn = (...args: any[]) => args
+const asyncFn = (...args: any[]) => Promise.resolve(args)
 const rejectedAsyncFn = () => Promise.reject(new Error('oh oh'))
 
 test('Resolves hasResolved and value', () => {

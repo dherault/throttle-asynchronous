@@ -1,8 +1,8 @@
-function throttle(fn, delay) {
-  let timeoutId
-  const accumulator = []
+function throttle(fn: (...args: any[]) => any, delay: number) {
+  let timeoutId: NodeJS.Timeout
+  const accumulator: (() => void)[] = []
 
-  return (...args) => new Promise(resolve => {
+  return (...args: any[]) => new Promise(resolve => {
     clearTimeout(timeoutId)
 
     accumulator.push(() => resolve({ hasResolved: false }))
@@ -19,4 +19,4 @@ function throttle(fn, delay) {
   })
 }
 
-module.exports = throttle
+export default throttle

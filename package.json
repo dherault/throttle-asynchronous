@@ -1,6 +1,6 @@
 {
   "name": "throttle-asynchronous",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Throttle many promises, resolve once",
   "main": "index.js",
   "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",

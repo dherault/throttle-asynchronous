@@ -57,15 +57,3 @@ test('Throttles the right amount of times', async () => {
 
   expect(i).toEqual(1)
 })
-
-test('Rejects like a gentleman', () => {
-  const t = throttle(rejectedAsyncFn, 1000)
-
-  const p0 = t(0)
-  const p1 = t(1, 2)
-  const p2 = t(3, 4)
-
-  expect(p0).rejects.toThrow('oh oh')
-  expect(p1).rejects.toThrow('oh oh')
-  expect(p2).rejects.toThrow('oh oh')
-})
